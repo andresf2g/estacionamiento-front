@@ -5,7 +5,7 @@
     <th>Tipo de vehiculo</th>
     <th>Fecha de ingreso</th>
   </tr>
-  <tr *ngFor="let vehiculo of vehiculos" [class.selected]="vehiculo === vehiculoSeleccionado" (click)="seleccionarVehiculo(vehiculo)">
+  <tr *ngFor="let vehiculo of estacionamientService.vehiculos" [class.selected]="vehiculo === vehiculoSeleccionado" (click)="seleccionarVehiculo(vehiculo)">
     <td>{{vehiculo.placa}}</td>
     <td>{{vehiculo.tipoVehiculo}}</td>
     <td>{{vehiculo.fechaIngreso}}</td>

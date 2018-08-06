@@ -13,10 +13,13 @@ export class VehiculoDetalleComponent implements OnInit {
   @Input() vehiculo: Vehiculo;
   
   registrarEgreso(): void {
-    this.estacionamientService.registrarEgresoVehiculo(this.vehiculo).subscribe();
+    this.estacionamientService.registrarEgresoVehiculo(this.vehiculo).subscribe(resultado => {
+      if (resultado) {
+        this.vehiculo = undefined;
+      }
+    });
   }
   
   ngOnInit() {
-    this.vehiculo = undefined;
   }
 }

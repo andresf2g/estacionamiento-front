@@ -10,13 +10,16 @@ import { EstacionamientoService } from '../estacionamiento.service';
 export class VehiculoRegistroComponent implements OnInit {
   constructor(private estacionamientoService: EstacionamientoService) { }
 
-  vehiculo: Vehiculo;
+  vehiculo: Vehiculo = {};
 
   registrarIngreso(): void {
-    this.estacionamientoService.registrarIngresoVehiculo(this.vehiculo).subscribe();
+    this.estacionamientoService.registrarIngresoVehiculo(this.vehiculo).subscribe(resultado => {
+      if (resultado) {
+        this.vehiculo = {};
+      }
+    });
   }
   
   ngOnInit() {
-    this.vehiculo = {};
   }
 }
