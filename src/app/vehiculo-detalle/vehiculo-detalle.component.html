@@ -1,0 +1,18 @@
+<div *ngIf="vehiculo">
+  <h2>{{vehiculo.placa}}</h2>
+  <div>
+    <span>Tipo: </span>{{vehiculo.tipo}}
+  </div>
+  <div *ngIf="vehiculo.cilindraje">
+    <div>
+      <span>Cilindraje: </span>{{vehiculo.cilindraje}}
+    </div>
+  </div>
+  <div>
+    <span>Fecha de ingreso: </span>{{vehiculo.fechaIngreso}}
+  </div>
+  <div>
+    <span>Fecha de egreso: </span><input [(ngModel)]="vehiculo.fechaEgreso" type="text" id="fechaEgreso" name="fechaEgreso"/>
+  </div>
+  <button type="button" (click)="registrarEgreso()">Registrar egreso</button>
+</div>

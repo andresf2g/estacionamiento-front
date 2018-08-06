@@ -1,0 +1,15 @@
+<h2>Vehiculos estacionados</h2>
+<table>
+  <tr>
+    <th>Placa</th>
+    <th>Tipo de vehiculo</th>
+    <th>Fecha de ingreso</th>
+  </tr>
+  <tr *ngFor="let vehiculo of vehiculos" [class.selected]="vehiculo === vehiculoSeleccionado" (click)="seleccionarVehiculo(vehiculo)">
+    <td>{{vehiculo.placa}}</td>
+    <td>{{vehiculo.tipoVehiculo}}</td>
+    <td>{{vehiculo.fechaIngreso}}</td>
+  </tr>
+</table>
+
+<app-vehiculo-detalle [vehiculo]="vehiculoSeleccionado"></app-vehiculo-detalle>
