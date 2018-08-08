@@ -1,15 +1,21 @@
 <h2>Vehiculos estacionados</h2>
-<table>
-  <tr>
-    <th>Placa</th>
-    <th>Tipo de vehiculo</th>
-    <th>Fecha de ingreso</th>
-  </tr>
-  <tr *ngFor="let vehiculo of estacionamientService.vehiculos" [class.selected]="vehiculo === vehiculoSeleccionado" (click)="seleccionarVehiculo(vehiculo)">
-    <td>{{vehiculo.placa}}</td>
-    <td>{{vehiculo.tipoVehiculo}}</td>
-    <td>{{vehiculo.fechaIngreso}}</td>
-  </tr>
-</table>
+
+<nz-table #basicTable [nzData]="estacionamientService.vehiculos">
+  <thead>
+    <tr>
+      <th>Placa</th>
+      <th>Tipo vehiculo</th>
+      <th>Fecha  ingreso</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let vehiculo of estacionamientService.vehiculos" [class.selected]="vehiculo === vehiculoSeleccionado" (click)="seleccionarVehiculo(vehiculo)">
+      <td>{{vehiculo.placa}}</td>
+      <td>{{vehiculo.tipoVehiculo}}</td>
+      <td>{{vehiculo.fechaIngreso}}</td>
+    </tr>
+  </tbody>
+</nz-table>
+
 
 <app-vehiculo-detalle [vehiculo]="vehiculoSeleccionado"></app-vehiculo-detalle>

@@ -4,4 +4,5 @@ export class Vehiculo {
     cilindraje?: number;
     fechaIngreso?: string;
     fechaEgreso?: string;
+    visible?: boolean;
 }

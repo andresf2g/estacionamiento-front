@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Vehiculo } from './vehiculo';
@@ -25,8 +25,26 @@ export class EstacionamientoService {
     this.http.get<Vehiculo[]>(this.estacionamientUrl + '/listarVehiculosParqueados').subscribe(vehiculos => this.vehiculos = vehiculos);
   }
 
+  private hayError: boolean;
+  
   registrarIngresoVehiculo(vehiculo: Vehiculo): Observable<[string]> {
     this.limpiarMensajes();
+    this.hayError = false;
+    if (!vehiculo.placa) {
+      this.mensajeService.agregarError('Debe ingresar la placa del vehiculo');
+      this.hayError = true;
+    }
+    if (!vehiculo.tipoVehiculo) {
+      this.mensajeService.agregarError('Debe especificar el tipo de vehiculo');
+      this.hayError = true;
+    }
+    if (vehiculo.tipoVehiculo == 'MOTO' && !vehiculo.cilindraje) {
+      this.mensajeService.agregarError('Debe ingresar el cilindraje de la moto');
+      this.hayError = true;
+    }
+    if (this.hayError) {
+      return throwError('VALIDATION_ERRORS');
+    }
     return this.http.post<[string]>(this.estacionamientUrl + '/registrarIngresoVehiculo', JSON.stringify(vehiculo), httpOptions).pipe(
       tap((resultado: [string]) => { 
         this.mensajeService.agregarExito(resultado[0]);

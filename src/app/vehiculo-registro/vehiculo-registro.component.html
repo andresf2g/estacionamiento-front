@@ -1,20 +1,22 @@
 <h2>Registro</h2>
 <div>
-  <span>Placa: </span><input type="text" [(ngModel)]="vehiculo.placa" id="placa" name="placa"/>
+  <span>Placa: </span><input type="text" [(ngModel)]="vehiculo.placa" nz-input id="placa" name="placa"/>
 </div>
 <div>
   <span>Tipo de vehiculo: </span>
-  <input type="radio" id="moto" name="tipoVehiculo" value="MOTO" [(ngModel)]="vehiculo.tipoVehiculo">Moto
-  <input type="radio" id="carro" name="tipoVehiculo" value="CARRO" [(ngModel)]="vehiculo.tipoVehiculo"/>Carro
+  <nz-radio-group [(ngModel)]="vehiculo.tipoVehiculo">
+    <label nz-radio-button nzValue="MOTO">Moto</label>
+    <label nz-radio-button nzValue="CARRO">Carro</label>
+  </nz-radio-group>
 </div>
 <div *ngIf="vehiculo.tipoVehiculo=='MOTO'">
   <span>Cilindraje: </span>
-  <input type="number" [(ngModel)]="vehiculo.cilindraje" id="cilindraje" name="cilindraje"/>
+  <input type="number" [(ngModel)]="vehiculo.cilindraje" nz-input id="cilindraje" name="cilindraje"/>
 </div>
 <div>
   <span>Fecha de ingreso: </span>
-  <input type="text" [(ngModel)]="vehiculo.fechaIngreso" id="fechaIngreso" name="fechaIngreso"/>
+  <input type="text" [(ngModel)]="vehiculo.fechaIngreso" nz-input id="fechaIngreso" name="fechaIngreso"/>
 </div>
-<div>
-  <button type="button" id="ingresar" name="ingresar" (click)="registrarIngreso()">Registrar ingreso</button>
+<div align="center">
+  <button type="button" nz-button nzType="primary" id="ingresar" name="ingresar" (click)="registrarIngreso()">Registrar ingreso</button>
 </div>

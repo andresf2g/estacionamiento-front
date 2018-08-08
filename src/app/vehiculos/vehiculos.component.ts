@@ -14,6 +14,7 @@ export class VehiculosComponent implements OnInit {
   
   seleccionarVehiculo(vehiculo: Vehiculo) : void {
     this.vehiculoSeleccionado = vehiculo;
+    this.vehiculoSeleccionado.visible = true;
   }
 
   ngOnInit() {

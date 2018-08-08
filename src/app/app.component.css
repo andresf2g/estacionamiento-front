@@ -1,0 +1,12 @@
+.contorno {
+    padding:0 5px;
+}
+
+nz-header {
+    background-color: #1890ff;
+    text-align: center;
+}
+
+nz-header h1 {
+    color: white;
+}

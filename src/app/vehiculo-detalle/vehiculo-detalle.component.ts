@@ -18,6 +18,15 @@ export class VehiculoDetalleComponent implements OnInit {
         this.vehiculo = undefined;
       }
     });
+    this.ocultarModal();
+  }
+
+  mostrarModal() {
+    this.vehiculo.visible = true;
+  }
+
+  ocultarModal() {
+    this.vehiculo.visible = false;
   }
   
   ngOnInit() {

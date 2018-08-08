@@ -1,11 +1,11 @@
 <div *ngIf="mensajeService.mensajesExito.length">
-  <h2>Ok</h2>
-  <button (click)="mensajeService.limpiarExito()">Limpiar</button>
-  <div *ngFor='let mensaje of mensajeService.mensajesExito'> {{mensaje}} </div>
+  <div *ngFor='let mensaje of mensajeService.mensajesExito'> 
+    <nz-alert nzType="success" nzCloseText="X" nzMessage="{{mensaje}}" nzShowIcon></nz-alert>
+  </div>
 </div>
 
 <div *ngIf="mensajeService.mensajesError.length">
-  <h2>Error</h2>
-  <button (click)="mensajeService.limpiarError()">Limpiar</button>
-  <div *ngFor='let mensaje of mensajeService.mensajesError'> {{mensaje}} </div>
+  <div *ngFor='let mensaje of mensajeService.mensajesError'>
+    <nz-alert nzType="error" nzCloseText="X" nzMessage="{{mensaje}}" nzShowIcon></nz-alert>
+  </div>
 </div>
