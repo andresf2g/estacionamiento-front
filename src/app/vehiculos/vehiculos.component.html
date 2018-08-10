@@ -1,5 +1,9 @@
 <h2>Vehiculos estacionados</h2>
-
+<div style="margin-bottom: 16px;">
+  <nz-input-group nzAddOnAfterIcon="anticon anticon-search" (click)="listarPorPlaca()">
+    <input type="text" nz-input [(ngModel)]="placa">
+  </nz-input-group>
+</div>
 <nz-table #basicTable [nzData]="estacionamientService.vehiculos">
   <thead>
     <tr>

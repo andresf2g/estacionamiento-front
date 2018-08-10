@@ -21,8 +21,12 @@ export class EstacionamientoService {
   
   private estacionamientUrl = 'http://localhost:8080/estacionamiento';
   
-  listarVehiculosParqueados(): void {
-    this.http.get<Vehiculo[]>(this.estacionamientUrl + '/listarVehiculosParqueados').subscribe(vehiculos => this.vehiculos = vehiculos);
+  listarVehiculosParqueados(placa: string): void {
+    if (placa) {
+      this.http.get<Vehiculo[]>(this.estacionamientUrl + '/listarVehiculosParqueados?placa=' + placa).subscribe(vehiculos => this.vehiculos = vehiculos);
+    } else {
+      this.http.get<Vehiculo[]>(this.estacionamientUrl + '/listarVehiculosParqueados').subscribe(vehiculos => this.vehiculos = vehiculos);
+    }
   }
 
   registrarIngresoVehiculo(vehiculo: Vehiculo): Observable<[string]> {
@@ -34,7 +38,7 @@ export class EstacionamientoService {
     return this.http.post<[string]>(this.estacionamientUrl + '/registrarIngresoVehiculo', JSON.stringify(vehiculo), httpOptions).pipe(
       tap((resultado: [string]) => { 
         this.mensajeService.agregarExito(resultado[0]);
-        this.listarVehiculosParqueados();
+        this.listarVehiculosParqueados('');
       }),
       catchError(this.handleError<[string]>('IngresoVehiculo'))
     );
@@ -61,7 +65,7 @@ export class EstacionamientoService {
     return this.http.post<[[string]]>(this.estacionamientUrl + '/registrarSalidaVehiculo', JSON.stringify(vehiculo), httpOptions).pipe(
       tap((resultado: [string]) => {
         this.mensajeService.agregarExito(`El valor a pagar es: $${resultado[0]}`);
-        this.listarVehiculosParqueados();
+        this.listarVehiculosParqueados('');
       }),
       catchError(this.handleError<[string]>('SalidaVehiculo'))
     );
