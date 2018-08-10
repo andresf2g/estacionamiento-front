@@ -12,8 +12,8 @@ export class VehiculoDetalleComponent implements OnInit {
   
   @Input() vehiculo: Vehiculo;
   
-  registrarEgreso(): void {
-    this.estacionamientService.registrarEgresoVehiculo(this.vehiculo).subscribe(resultado => {
+  registrarSalida(): void {
+    this.estacionamientService.registrarSalidaVehiculo(this.vehiculo).subscribe(resultado => {
       if (resultado) {
         this.vehiculo = undefined;
       }

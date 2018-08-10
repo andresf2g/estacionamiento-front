@@ -1,5 +1,5 @@
 <div *ngIf="vehiculo">
-  <nz-modal [(nzVisible)]="vehiculo.visible" nzTitle="Registrar egreso" (nzOnCancel)="ocultarModal()" (nzOnOk)="registrarEgreso()">
+  <nz-modal [(nzVisible)]="vehiculo.visible" nzTitle="Registrar salida" (nzOnCancel)="ocultarModal()" (nzOnOk)="registrarSalida()">
     <h2>{{vehiculo.placa}}</h2>
     <div>
       <span>Tipo: </span>{{vehiculo.tipoVehiculo}}
@@ -13,7 +13,7 @@
       <span>Fecha de ingreso: </span>{{vehiculo.fechaIngreso}}
     </div>
     <div>
-      <span>Fecha de egreso: </span><input type="text" [(ngModel)]="vehiculo.fechaEgreso" id="fechaEgreso" name="fechaEgreso"/>
+      <span>Fecha de salida: </span><input type="text" [(ngModel)]="vehiculo.fechaSalida" id="fechaSalida" name="fechaSalida"/>
     </div>
   </nz-modal>
 </div>

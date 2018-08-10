@@ -3,6 +3,6 @@ export class Vehiculo {
     tipoVehiculo?: string;
     cilindraje?: number;
     fechaIngreso?: string;
-    fechaEgreso?: string;
+    fechaSalida?: string;
     visible?: boolean;
 }
