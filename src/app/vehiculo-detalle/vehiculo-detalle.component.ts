@@ -8,12 +8,12 @@ import { EstacionamientoService } from '../estacionamiento.service';
   styleUrls: ['./vehiculo-detalle.component.css']
 })
 export class VehiculoDetalleComponent implements OnInit {
-  constructor(private estacionamientService: EstacionamientoService) { }
+  constructor(private estacionamientoService: EstacionamientoService) { }
   
   @Input() vehiculo: Vehiculo;
   
   registrarSalida(): void {
-    this.estacionamientService.registrarSalidaVehiculo(this.vehiculo).subscribe(resultado => {
+    this.estacionamientoService.registrarSalidaVehiculo(this.vehiculo).subscribe(resultado => {
       if (resultado) {
         this.vehiculo = undefined;
       }

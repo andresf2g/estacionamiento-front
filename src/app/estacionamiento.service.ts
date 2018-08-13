@@ -18,6 +18,7 @@ export class EstacionamientoService {
   constructor(private http: HttpClient, private mensajeService: MensajeService) { }
 
   vehiculos: Vehiculo[];
+  formatoFecha: string = 'yyyy-MM-dd HH:mm';
   
   private estacionamientUrl = 'http://localhost:8080/estacionamiento';
   

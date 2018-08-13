@@ -1,22 +1,39 @@
 <h2>Registro</h2>
-<div>
-  <span>Placa: </span><input type="text" [(ngModel)]="vehiculo.placa" nz-input id="placa" name="placa"/>
+<div nz-row class="row">
+  <div nz-col nzXs="10" nzSm="24" nzLg="8">
+    <span>Placa: </span>
+  </div>
+  <div nz-col nzXs="14" nzSm="24" nzLg="16">
+    <input type="text" [(ngModel)]="vehiculo.placa" nz-input id="placa" name="placa"/>
+  </div>
 </div>
-<div>
-  <span>Tipo de vehiculo: </span>
-  <nz-radio-group [(ngModel)]="vehiculo.tipoVehiculo">
-    <label nz-radio-button nzValue="MOTO">Moto</label>
-    <label nz-radio-button nzValue="CARRO">Carro</label>
-  </nz-radio-group>
+<div nz-row class="row">
+  <div nz-col nzXs="10" nzSm="24" nzLg="8">
+    <span>Tipo de vehiculo: </span>
+  </div>
+  <div nz-col nzXs="14" nzSm="24" nzLg="16">
+    <nz-radio-group [(ngModel)]="vehiculo.tipoVehiculo">
+      <label nz-radio-button nzValue="MOTO">Moto</label>
+      <label nz-radio-button nzValue="CARRO">Carro</label>
+    </nz-radio-group>
+  </div>
 </div>
-<div *ngIf="vehiculo.tipoVehiculo=='MOTO'">
-  <span>Cilindraje: </span>
-  <input type="number" [(ngModel)]="vehiculo.cilindraje" nz-input id="cilindraje" name="cilindraje"/>
+<div nz-row *ngIf="vehiculo.tipoVehiculo=='MOTO'" class="row">
+  <div nz-col nzXs="10" nzSm="24" nzLg="8">
+    <span>Cilindraje: </span>
+  </div>
+  <div nz-col nzXs="14" nzSm="24" nzLg="16">
+    <input type="number" [(ngModel)]="vehiculo.cilindraje" nz-input id="cilindraje" name="cilindraje"/>
+  </div>
 </div>
-<div>
-  <span>Fecha de ingreso: </span>
-  <input type="text" [(ngModel)]="vehiculo.fechaIngreso" nz-input id="fechaIngreso" name="fechaIngreso"/>
+<div nz-row class="row">
+  <div nz-col nzXs="10" nzSm="24" nzLg="8">
+    <span>Fecha de ingreso: </span>
+  </div>
+  <div nz-col nzXs="14" nzSm="24" nzLg="16">
+    <nz-date-picker [(ngModel)]="vehiculo.fechaIngreso" [nzFormat]="estacionamientoService.formatoFecha" nzShowTime></nz-date-picker>
+  </div>
 </div>
-<div align="center">
+<div nz-row align="center" class="row">
   <button type="button" nz-button nzType="primary" id="ingresar" name="ingresar" (click)="registrarIngreso()">Registrar ingreso</button>
 </div>

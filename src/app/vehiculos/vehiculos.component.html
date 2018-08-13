@@ -1,25 +1,33 @@
-<h2>Vehiculos estacionados</h2>
-<div style="margin-bottom: 16px;">
-  <nz-input-group nzAddOnAfterIcon="anticon anticon-search" (click)="listarPorPlaca()">
-    <input type="text" nz-input [(ngModel)]="placa">
-  </nz-input-group>
+<div nz-col nzXs="16">
+  <h2>Vehiculos estacionados</h2>
 </div>
-<nz-table #basicTable [nzData]="estacionamientService.vehiculos">
-  <thead>
-    <tr>
-      <th>Placa</th>
-      <th>Tipo vehiculo</th>
-      <th>Fecha  ingreso</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let vehiculo of estacionamientService.vehiculos" [class.selected]="vehiculo === vehiculoSeleccionado" (click)="seleccionarVehiculo(vehiculo)">
-      <td>{{vehiculo.placa}}</td>
-      <td>{{vehiculo.tipoVehiculo}}</td>
-      <td>{{vehiculo.fechaIngreso}}</td>
-    </tr>
-  </tbody>
-</nz-table>
+<div nz-col nzXs="8">
+  <nz-input-group nzSearch [nzSuffix]="suffixIconButton">
+    <input type="text" [(ngModel)]="placa" placeholder="Placa" nz-input>
+  </nz-input-group>
+  <ng-template #suffixIconButton>
+    <button nz-button nzType="primary" nzSearch (click)="listarPorPlaca()"><i class="anticon anticon-search"></i></button>
+  </ng-template>
+</div>
+<br>
+<div>
+  <nz-table #basicTable [nzData]="estacionamientService.vehiculos">
+    <thead>
+      <tr>
+        <th>Placa</th>
+        <th>Tipo vehiculo</th>
+        <th>Fecha  ingreso</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vehiculo of estacionamientService.vehiculos" [class.selected]="vehiculo === vehiculoSeleccionado" (click)="seleccionarVehiculo(vehiculo)">
+        <td>{{vehiculo.placa}}</td>
+        <td>{{vehiculo.tipoVehiculo}}</td>
+        <td>{{vehiculo.fechaIngreso | date: estacionamientService.formatoFecha}}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
 
 
 <app-vehiculo-detalle [vehiculo]="vehiculoSeleccionado"></app-vehiculo-detalle>

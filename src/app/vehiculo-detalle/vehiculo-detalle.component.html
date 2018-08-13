@@ -10,10 +10,10 @@
       </div>
     </div>
     <div>
-      <span>Fecha de ingreso: </span>{{vehiculo.fechaIngreso}}
+      <span>Fecha de ingreso: </span>{{vehiculo.fechaIngreso | date: estacionamientoService.formatoFecha}}
     </div>
     <div>
-      <span>Fecha de salida: </span><input type="text" [(ngModel)]="vehiculo.fechaSalida" id="fechaSalida" name="fechaSalida"/>
+      <span>Fecha de salida: </span><nz-date-picker [(ngModel)]="vehiculo.fechaSalida" [nzFormat]="estacionamientoService.formatoFecha" nzShowTime></nz-date-picker>
     </div>
   </nz-modal>
 </div>
